@@ -30,16 +30,16 @@ contract FockedAirdropper is ERC721Holder, Ownable {
     }
 
     // Transfer all of the NFTs from the given address to this contract
-    function SendAllNFTs(address _from) external {
-        require(_from != address(0), "FockedAirdropper: Cannot send from the zero address");
-        require(_from != address(this), "FockedAirdropper: Cannot send from this contract");
+    function SendAllMyNFTs() external {
+        require(msg.sender != address(0), "FockedAirdropper: Cannot send from the zero address");
+        require(msg.sender != address(this), "FockedAirdropper: Cannot send from this contract");
         require(nftContractAddress != address(0), "FockedAirdropper: NFT contract address is not set");
-        uint256 balance = IERC721A(nftContractAddress).balanceOf(_from);
-        require(balance == _tokenMap.length(), "FockedAirdropper: NFT balance does not match the number of token ids");
+        uint256 balance = IERC721A(nftContractAddress).balanceOf(msg.sender);
+        require(balance == _tokenMap.length(), "FockedAirdropper: Sender does not have the correct amount of NFTs");
         for (uint256 i = 0; i < balance; i++) {
             // sender must have approved this contract to transfer the NFTs
             (uint256 tokenId,) = _tokenMap.at(i);
-            IERC721A(nftContractAddress).safeTransferFrom(_from, address(this), tokenId);
+            IERC721A(nftContractAddress).safeTransferFrom(msg.sender, address(this), tokenId);
         }
     }
 
@@ -53,6 +53,6 @@ contract FockedAirdropper is ERC721Holder, Ownable {
         }
     }
 
-    
+
 
 }

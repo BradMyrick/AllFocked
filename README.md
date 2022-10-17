@@ -1,6 +1,6 @@
 # AllFocked V2 NFT Repository
 
-These are the inital contracts used during the AllFocked V2 launched and the subsequent contracts written by 
+These are the inital contracts used during the AllFocked V2 launch and the subsequent contracts written by 
 Kodr.eth to manage the NFTs.
 
 Try running some of the following tasks:

@@ -14,4 +14,29 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
-contract FockedAirdropper 
+contract FockedAirdropper is ERC721Holder {
+    using Address for address;
+    using Counters for Counters.Counter;
+    using EnumerableSet for EnumerableSet.AddressSet;
+    using EnumerableMap for EnumerableMap.UintToAddressMap;
+    using SafeMath for uint256;
+    using Strings for uint256;
+
+    // the address of the ERC721 contract that will be used to distribute the tokens
+    address public nftContractAddress;
+
+    // the list of addresses that will be receiving the tokens
+    EnumerableSet.AddressSet private _airdropList;
+
+    // the list of token ids that will be distributed
+    EnumerableMap.UintToAddressMap private _tokenIds;
+
+    constructor(address _nftContractAddress, address[] memory _addresses, uint256[] memory _tokenIds) {
+        nftContractAddress = _nftContractAddress;
+        for (uint256 i = 0; i < _addresses.length; i++) {
+            _airdropList.add(_addresses[i]);
+        }
+        for (uint256 i = 0; i < _tokenIds.length; i++) {
+            _tokenIds.set(_tokenIds[i], _tokenIds[i]);
+        }
+    }

@@ -6,7 +6,7 @@ import "./ERC721A.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 
-contract AllFockedV2 is ERC721A, Ownable {
+contract TestNFT is ERC721A, Ownable {
   
   constructor(address receiver) ERC721A("AllFockedV2", "AF2") {
     // mint 20 nfts to the receiver

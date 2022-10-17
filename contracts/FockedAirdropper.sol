@@ -6,19 +6,14 @@ pragma solidity ^0.8.10;
 
 import "./IERC721A.sol";
 import "@openzeppelin/contracts/token/ERC721/utils/ERC721Holder.sol";
-import "@openzeppelin/contracts/utils/Address.sol";
-import "@openzeppelin/contracts/utils/structs/EnumerableSet.sol";
 import "@openzeppelin/contracts/utils/structs/EnumerableMap.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
-import "@openzeppelin/contracts/utils/Strings.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 
 contract FockedAirdropper is ERC721Holder, Ownable {
-    using Address for address;
     using Counters for Counters.Counter;
     using EnumerableMap for EnumerableMap.UintToAddressMap;
-    using Strings for uint256;
 
     // the address of the ERC721 contract that will be used to distribute the tokens
     address public nftContractAddress;
@@ -58,5 +53,6 @@ contract FockedAirdropper is ERC721Holder, Ownable {
         }
     }
 
+    
 
 }

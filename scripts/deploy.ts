@@ -1,18 +1,15 @@
 import { ethers } from "hardhat";
 
 async function main() {
-  const currentTimestampInSeconds = Math.round(Date.now() / 1000);
-  const ONE_YEAR_IN_SECS = 365 * 24 * 60 * 60;
-  const unlockTime = currentTimestampInSeconds + ONE_YEAR_IN_SECS;
+  const _nftContractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+  const _addresses: string[] = ["0x5FbDB2315678afecb367f032d93F642f64180aa3", "0x5FbDB2315678afecb367f032d93F642f64180aa3", "0x5FbDB2315678afecb367f032d93F642f64180aa3"];
+  const _Ids: number[] = [8, 15, 69];
+  const Airdropper = await ethers.getContractFactory("FockedAirdropper");
+  const airdropper = await Airdropper.deploy(_nftContractAddress, _addresses, _Ids);
 
-  const lockedAmount = ethers.utils.parseEther("1");
+  await airdropper.deployed();
 
-  const Lock = await ethers.getContractFactory("Lock");
-  const lock = await Lock.deploy(unlockTime, { value: lockedAmount });
-
-  await lock.deployed();
-
-  console.log(`Lock with 1 ETH and unlock timestamp ${unlockTime} deployed to ${lock.address}`);
+  console.log(`Airdropper deployed to ${airdropper.address}`);
 }
 
 // We recommend this pattern to be able to use async/await everywhere

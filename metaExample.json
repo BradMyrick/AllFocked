@@ -1,0 +1,32 @@
+{
+    "attributes": [
+        {
+          "trait_type": "Fur", 
+          "value": "Blue"
+        }, 
+        {
+          "trait_type": "Face", 
+          "value": "Angry"
+        }, 
+        {
+          "trait_type": "Hat", 
+          "value": "Dodo Trucker"
+        }, 
+        {
+          "trait_type": "Shirt", 
+          "value": "Red Hobo"
+        }, 
+        {
+          "trait_type": "Accessory", 
+          "value": "Sheethed Bat"
+        }, 
+        {
+          "trait_type": "Ears", 
+          "value": "Up"
+        }, 
+        {
+          "trait_type": "Bunny Boost", 
+          "value": 2
+        }
+      ]
+    }
